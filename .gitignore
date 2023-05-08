@@ -18,3 +18,7 @@ var/
 
 # Serverless directories
 .serverless
+
+# for lambda layer directories
+lambda_layers/*
+!lambda_layers/audioMaker.py
