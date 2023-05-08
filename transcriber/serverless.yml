@@ -1,0 +1,15 @@
+service: minutes-serverless
+
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: python3.9
+  stage: prod
+  region: ap-northeast-1
+  profile: minutes
+  endpointType: regional
+
+functions:
+  transcriber:
+    handler: handler.main
