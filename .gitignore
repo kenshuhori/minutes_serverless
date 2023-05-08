@@ -21,4 +21,4 @@ var/
 
 # for lambda layer directories
 lambda_layers/*
-!lambda_layers/audioMaker.py
+!lambda_layers/requirements.txt
