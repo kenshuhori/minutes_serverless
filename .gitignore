@@ -20,5 +20,5 @@ var/
 .serverless
 
 # for lambda layer directories
-lambda_layers/*
-!lambda_layers/requirements.txt
+python/*
+!python/requirements.txt

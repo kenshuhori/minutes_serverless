@@ -10,15 +10,14 @@
 serverless deploy
 ```
 
-## lambda_layersについて
+## pythonディレクトリについて
 `AWS Lambda` の `Layer` 機能のためのディレクトリ
 
 `Layer` を変更する場合は下記の流れで操作を行う
 
 ```sh
 # requirements.txt を編集する
-cd lambda_layers
-pip install -r requirements.txt -t .
-zip -r9 layer.zip .
-# layer.zipを AWS マネジメントコンソールからアップロード
+pip install -r requirements.txt -t python
+zip -r9 layer.zip python
+# 生成された layer.zip をAWS マネジメントコンソールからアップロード
 ```
