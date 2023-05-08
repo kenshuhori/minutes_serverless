@@ -21,5 +21,4 @@ var/
 
 # for lambda layer directories
 python/*
-!python/requirements.txt
 layer.zip

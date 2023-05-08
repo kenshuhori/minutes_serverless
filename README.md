@@ -17,7 +17,8 @@ serverless deploy
 
 ```sh
 # requirements.txt を編集する
-pip install -r requirements.txt -t python
-zip -r9 layer.zip python
+docker run --rm -v $(pwd):/var/task amazon/aws-sam-cli-build-image-python3.9:latest \
+pip install -r requirements.txt -t python/lib/python3.9/site-packages/
+zip -r layer.zip python
 # 生成された layer.zip をAWS マネジメントコンソールからアップロード
 ```
