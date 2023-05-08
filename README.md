@@ -16,9 +16,12 @@ serverless deploy
 `Layer` を変更する場合は下記の流れで操作を行う
 
 ```sh
-# requirements.txt を編集する
-docker run --rm -v $(pwd):/var/task amazon/aws-sam-cli-build-image-python3.9:latest \
-pip install -r requirements.txt -t python/lib/python3.9/site-packages/
-zip -r layer.zip python
+docker build . -t lambda-layer:python3.9
+docker container run -it --name "test" lambda-layer:python3.9
+pip3 install -t /python boto3==1.26.90 pydub yt-dlp pycryptodome
+zip -r /dist/layer.zip /python
+
+# コンテナ抜ける
+docker cp [CONTAINER ID]:/dist/pandas.zip ./
 # 生成された layer.zip をAWS マネジメントコンソールからアップロード
 ```
