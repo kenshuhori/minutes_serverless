@@ -1,6 +1,6 @@
 import json
 import boto3
-import subprocess, base64
+import subprocess, base64, os
 import yt_dlp
 
 BUCKET_NAME='minutes-prod-contents'
@@ -24,10 +24,10 @@ def extract(video_id, part):
   urls = [f'https://www.youtube.com/watch?v={video_id}']
   with yt_dlp.YoutubeDL(ydl_opts) as ydl:
     error_code = ydl.download(urls)
-  return error_code, 'error_message if exists...', open(f'/tmp/videos/{video_id}.m4a', 'r')
+  return error_code, 'error_message if exists...', f'/tmp/videos/{video_id}.m4a'
 
 def upload(file):
-  response = s3.upload_file(file, BUCKET_NAME)
+  response = s3.Object(BUCKET_NAME, os.path.basename(file)).upload_file(file)
   return response
 
 if __name__ == "__main__":
