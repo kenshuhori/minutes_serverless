@@ -11,7 +11,7 @@ ydl_opts = {
   'outtmpl': '/tmp/videos/%(id)s.%(ext)s'
 }
 
-def execute(event, context):
+def main(event, context):
   video_id = 'YcPwmCj0iGI'
   part = 0
   returncode, error_message, file = extract(video_id, part)
@@ -32,4 +32,4 @@ def upload(file):
 
 if __name__ == "__main__":
   event = { 'data': '', 'part': '0' }
-  execute(event, '')
+  main(event, '')
