@@ -27,7 +27,7 @@ def extract(video_id, part):
   return error_code, 'error_message if exists...', f'/tmp/videos/{video_id}.m4a'
 
 def upload(file):
-  response = s3.Object(BUCKET_NAME, os.path.basename(file)).upload_file(file)
+  response = s3.Object(BUCKET_NAME, f'/audios/{os.path.basename(file)}').upload_file(file)
   return response
 
 if __name__ == "__main__":
