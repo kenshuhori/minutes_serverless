@@ -14,6 +14,7 @@ package:
   exclude:
     - layer.zip
     - openai.apikey.txt
+    - YcPwmCj0iGI.m4a
     - YcPwmCj0iGI.m4a.txt
 
 functions:
