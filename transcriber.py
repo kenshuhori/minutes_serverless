@@ -1,8 +1,28 @@
+import json
+import boto3
 import os
 import openai
 
+BUCKET_NAME='minutes-prod-contents'
+
+s3 = boto3.resource('s3')
+
 def main(event, context):
   print('🔥🔥🔥')
+  print(event)
+  print(event['Records'])
+  print(event['Records'][0])
+  print(event['Records'][0]['s3'])
+  print(event['Records'][0]['s3']['object'])
+  print(event['Records'][0]['s3']['object']['key'])
+  print('🔥🔥🔥🔥')
+  print(context)
+  event_object = event['Records'][0]['s3']['object']['key']
+  bucket = s3.Bucket(BUCKET_NAME)
+  obj = bucket.Object(event_object).get()
+
+def hoge(event, context):
+  print('🔥')
   fname = "YcPwmCj0iGI.m4a"
   openai.api_key = os.environ['OPENAI_API_KEY']
   audio_file = open(fname, "rb")
