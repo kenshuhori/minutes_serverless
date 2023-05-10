@@ -1,5 +1,8 @@
 # minutes_serverless
 
+## 概要
+文字起こししたYouTube動画の全文検索サービス
+
 ## 前提
 - `serverless framework` がインストールされていること
 - `aws cli` が構築されていること（`minutes` プロファイルが必要）
