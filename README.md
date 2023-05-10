@@ -20,11 +20,9 @@ serverless deploy
 
 ```sh
 docker build . -t lambda-layer:python3.9
-docker container run -it --name "test" lambda-layer:python3.9
-pip3 install -t /python boto3==1.26.90 pydub yt-dlp pycryptodome
+docker container run --rm -it --volume $(pwd):/dist --name "test" lambda-layer:python3.9
+cd dist
+pip3 install -t /python -r requirements.txt
 zip -r /dist/layer.zip /python
-
-# コンテナ抜ける
-docker cp [CONTAINER ID]:/dist/pandas.zip ./
 # 生成された layer.zip をAWS マネジメントコンソールからアップロード
 ```
