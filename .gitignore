@@ -22,3 +22,7 @@ var/
 # for lambda layer directories
 python/*
 layer.zip
+
+# others
+*.m4a
+*.m4a.txt

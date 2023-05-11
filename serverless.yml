@@ -10,6 +10,12 @@ provider:
   profile: minutes
   endpointType: regional
 
+package:
+  exclude:
+    - layer.zip
+    - YcPwmCj0iGI.m4a
+    - YcPwmCj0iGI.m4a.txt
+
 functions:
   audioMaker:
     handler: audioMaker.main
