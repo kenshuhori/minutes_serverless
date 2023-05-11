@@ -1,7 +1,9 @@
 import json
 import boto3
 import os
+import requests
 import openai
+
 
 BUCKET_NAME='minutes-prod-contents'
 
