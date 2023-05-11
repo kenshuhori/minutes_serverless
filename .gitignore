@@ -24,6 +24,5 @@ python/*
 layer.zip
 
 # others
-openai.apikey.txt
 *.m4a
 *.m4a.txt
