@@ -25,3 +25,4 @@ functions:
           method: get
   transcriber:
     handler: transcriber.main
+    timeout: 60
