@@ -17,9 +17,9 @@ def main(event, context):
     event_object = event['Records'][0]['s3']['object']['key']
     bucket = s3.Bucket(BUCKET_NAME)
     print("🔥🔥")
-    obj = bucket.download_file(event_object, '/tmp/hoge.m4a')
+    bucket.download_file(event_object, '/tmp/hoge.m4a')
     print("🔥🔥🔥")
-    audio_file = open(obj, "rb")
+    audio_file = open('/tmp/hoge.m4a', "rb")
     print("🔥🔥🔥🔥")
     transcript = openai.Audio.transcribe("whisper-1", audio_file)
     print("🔥🔥🔥🔥🔥")
