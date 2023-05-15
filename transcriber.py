@@ -17,7 +17,7 @@ def main(event, context):
     event_object = event['Records'][0]['s3']['object']['key']
     bucket = s3.Bucket(BUCKET_NAME)
     print("🔥🔥")
-    obj = bucket.Object(event_object).get()
+    obj = bucket.download_file(event_object, '/tmp/hoge.m4a')
     print("🔥🔥🔥")
     audio_file = open(obj, "rb")
     print("🔥🔥🔥🔥")
