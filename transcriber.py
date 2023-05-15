@@ -11,18 +11,14 @@ s3 = boto3.resource('s3')
 
 def main(event, context):
     print(event)
-    fname = "leothefootball"
-    print("🔥")
+    fname = "/tmp/leothefootball"
     openai.api_key = get_parameter()
     event_object = event['Records'][0]['s3']['object']['key']
     bucket = s3.Bucket(BUCKET_NAME)
-    print("🔥🔥")
     bucket.download_file(event_object, '/tmp/hoge.m4a')
-    print("🔥🔥🔥")
     audio_file = open('/tmp/hoge.m4a', "rb")
-    print("🔥🔥🔥🔥")
     transcript = openai.Audio.transcribe("whisper-1", audio_file)
-    print("🔥🔥🔥🔥🔥")
+    print("🔥")
     txt = "\n".join(transcript['text'].split())
     f = open(fname + ".txt", "w")
     f.write(txt)
