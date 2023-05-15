@@ -12,28 +12,22 @@ s3 = boto3.resource('s3')
 def main(event, context):
     print(event)
     fname = "leothefootball"
+    print("🔥")
     openai.api_key = get_parameter()
     event_object = event['Records'][0]['s3']['object']['key']
     bucket = s3.Bucket(BUCKET_NAME)
+    print("🔥🔥")
     obj = bucket.Object(event_object).get()
+    print("🔥🔥🔥")
     audio_file = open(obj, "rb")
+    print("🔥🔥🔥🔥")
     transcript = openai.Audio.transcribe("whisper-1", audio_file)
+    print("🔥🔥🔥🔥🔥")
     txt = "\n".join(transcript['text'].split())
     f = open(fname + ".txt", "w")
     f.write(txt)
     f.close()
     upload(fname + ".txt")
-
-def hoge(event, context):
-    print('🔥')
-    fname = "YcPwmCj0iGI.m4a"
-    openai.api_key = os.environ['OPENAI_API_KEY']
-    audio_file = open(fname, "rb")
-    transcript = openai.Audio.transcribe("whisper-1", audio_file)
-    txt = "\n".join(transcript['text'].split())
-    f = open(fname + ".txt", "w")
-    f.write(txt)
-    f.close()
 
 def get_parameter():
     end_point = 'http://localhost:2773'
@@ -52,4 +46,4 @@ def upload(file):
 
 if __name__ == "__main__":
   event = { 'data': '', 'part': '0' }
-  hoge(event, '')
+  main(event, '')
