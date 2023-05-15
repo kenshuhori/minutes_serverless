@@ -10,6 +10,7 @@ BUCKET_NAME='minutes-prod-contents'
 s3 = boto3.resource('s3')
 
 def main(event, context):
+    print('🔥')
     print(event)
     fname = "/tmp/leothefootball"
     openai.api_key = get_parameter()
@@ -18,7 +19,6 @@ def main(event, context):
     bucket.download_file(event_object, '/tmp/hoge.m4a')
     audio_file = open('/tmp/hoge.m4a', "rb")
     transcript = openai.Audio.transcribe("whisper-1", audio_file)
-    print("🔥")
     txt = "\n".join(transcript['text'].split())
     f = open(fname + ".txt", "w")
     f.write(txt)
@@ -37,7 +37,7 @@ def get_parameter():
     return res.json()['Parameter']['Value']
 
 def upload(file):
-    response = s3.Object(BUCKET_NAME, f'/documents/{os.path.basename(file)}').upload_file(file)
+    response = s3.Object(BUCKET_NAME, f'documents/{os.path.basename(file)}').upload_file(file)
     return response
 
 if __name__ == "__main__":

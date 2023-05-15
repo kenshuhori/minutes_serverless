@@ -9,7 +9,6 @@ provider:
   region: ap-northeast-1
   profile: minutes
   endpointType: regional
-  timeout: 60
 
 package:
   exclude:
@@ -26,3 +25,4 @@ functions:
           method: get
   transcriber:
     handler: transcriber.main
+    timeout: 60
